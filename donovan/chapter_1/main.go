@@ -1,7 +1,8 @@
 package main
 
 import (
-	"go_study/donovan/chapter_1/pkg/urls"
+	// "go_study/donovan/chapter_1/pkg/urls"
+	"go_study/donovan/chapter_1/pkg/fetchall"
 	// "bufio"
 	// "fmt"
 	// "image"
@@ -18,7 +19,8 @@ import (
 )
 
 func main() {
-	urls.SendReq()
+	fetchall.FetchAll()
+	// urls.SendReq()
 	// var s, sep string
 
 	// for i := 0; i < len(os.Args); i++ {
