@@ -1,15 +1,16 @@
 package main
 
 import (
+	"go_study/donovan/chapter_1/pkg/urls"
 	// "bufio"
 	// "fmt"
-	"image"
-	"image/color"
-	"image/gif"
-	"io"
-	"math"
-	"math/rand"
-	"os"
+	// "image"
+	// "image/color"
+	// "image/gif"
+	// "io"
+	// "math"
+	// "math/rand"
+	// "os"
 
 	// "strings"
 	// "strconv"
@@ -17,6 +18,7 @@ import (
 )
 
 func main() {
+	urls.SendReq()
 	// var s, sep string
 
 	// for i := 0; i < len(os.Args); i++ {
@@ -30,14 +32,14 @@ func main() {
 	// dup()
 	// dup2()
 
-	file, err := os.Create("lissajous.gif")
-    if err != nil {
-        panic(err)
-    }
-    defer file.Close()
+	// file, err := os.Create("lissajous.gif")
+    // if err != nil {
+    //     panic(err)
+    // }
+    // defer file.Close()
 
     // Вызываем функцию lissajous для создания анимации
-    lissajous(file)
+    // lissajous(file)
 }
 
 // func main() {
@@ -118,35 +120,35 @@ func main() {
 // 	}
 // }
 
-var pallete = []color.Color{color.White, color.Black}
+// var pallete = []color.Color{color.White, color.Black}
 
-const (
-	whiteIndex = 0
-	blackIndex = 0
-)
+// const (
+// 	whiteIndex = 0
+// 	blackIndex = 0
+// )
 
-func lissajous(out io.Writer) {
-	const (
-		cycles = 5 // кол-во полных колебаний x
-		res = 0.001 // угловое разрешение
-		size = 100 // канва изображения охватывает [size...+size]
-		nframes = 64 // количество кадров анимации
-		delay = 8 // задержка между кадрами (единица - 10 мс)
-	)
-	freq := rand.Float64() * 3.0
-	anim := gif.GIF{LoopCount: nframes}
-	phase := 0.0
-	for i := 0; i < nframes; i++ {
-		rect := image.Rect(0, 0, 2*size+1, 2*size+1)
-		img := image.NewPaletted(rect, pallete)
-		for t := 0.0; t < cycles * 2*math.Pi; t+=res {
-			x := math.Sin(t)
-			y :=math.Sin(t*freq+phase)
-			img.SetColorIndex(size + int(x*size+0.5), size +int(y*size+0.5), blackIndex)
-		}
-		phase += 0.1
-		anim.Delay = append(anim.Delay, delay)
-		anim.Image = append(anim.Image, img)
-	}
-	gif.EncodeAll(out, &anim)
-}
+// func lissajous(out io.Writer) {
+// 	const (
+// 		cycles = 5 // кол-во полных колебаний x
+// 		res = 0.001 // угловое разрешение
+// 		size = 100 // канва изображения охватывает [size...+size]
+// 		nframes = 64 // количество кадров анимации
+// 		delay = 8 // задержка между кадрами (единица - 10 мс)
+// 	)
+// 	freq := rand.Float64() * 3.0
+// 	anim := gif.GIF{LoopCount: nframes}
+// 	phase := 0.0
+// 	for i := 0; i < nframes; i++ {
+// 		rect := image.Rect(0, 0, 2*size+1, 2*size+1)
+// 		img := image.NewPaletted(rect, pallete)
+// 		for t := 0.0; t < cycles * 2*math.Pi; t+=res {
+// 			x := math.Sin(t)
+// 			y :=math.Sin(t*freq+phase)
+// 			img.SetColorIndex(size + int(x*size+0.5), size +int(y*size+0.5), blackIndex)
+// 		}
+// 		phase += 0.1
+// 		anim.Delay = append(anim.Delay, delay)
+// 		anim.Image = append(anim.Image, img)
+// 	}
+// 	gif.EncodeAll(out, &anim)
+// }
