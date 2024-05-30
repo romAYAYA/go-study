@@ -1,23 +1,62 @@
 package main
 
 import (
-	"flag"
+	// "go_study/donovan/chapter_2/pkg/mathalgos"
+
+	// "flag"
 	"fmt"
-	"strings"
+	// "strings"
 	// "go_study/donovan/chapter_2/pkg/declaration"
 )
 
 // var p = f()
 
-var n = flag.Bool("n", false, "пропуск символа новой строки")
-var sep = flag.String("s", " ", "разделитель")
+// var n = flag.Bool("n", false, "пропуск символа новой строки")
+// var sep = flag.String("s", " ", "разделитель")
+
+type Celsius float64
+type Fahrenheit float64
+
+const (
+	absoluteZeroC Celsius = 273.15
+	FreezingC     Celsius = 0
+	Boioling      Celsius = 100
+)
+
+func CToF(c Celsius) Fahrenheit { return Fahrenheit(c*9/5 + 32) }
+func FToC(f Fahrenheit) Celsius { return Celsius(f-32) * 5 / 9 }
+func (c Celsius) String() string {return fmt.Sprintf("%gC", c)}
 
 func main() {
-	flag.Parse()
-	fmt.Print(strings.Join(flag.Args(), *sep))
-	if !*n {
-		fmt.Println()
-	}
+	var c Celsius
+	var f Fahrenheit
+
+	fmt.Println(CToF(15))
+	fmt.Println(FToC(15))
+	fmt.Println(c == 0)
+	fmt.Println(f == 0)
+	fmt.Println(f == Fahrenheit(c))
+
+	// medals := []string{"gold", "silver", "bronze"}
+
+	// medals[0] = "gold"
+	// medals[1] = "silver"
+	// medals[2] = "bronze"
+
+	// fmt.Println(mathalgos.Gcd(15, 10))
+	// fmt.Println(mathalgos.Fib(15))
+	// fmt.Println(medals)
+
+	// p := new(int)
+	// fmt.Println(*p)
+	// *p = 2
+	// fmt.Println(*p)
+
+	// flag.Parse()
+	// fmt.Print(strings.Join(flag.Args(), *sep))
+	// if !*n {
+	// 	fmt.Println()
+	// }
 
 	// v := 1
 	// incr(&v)
