@@ -1,10 +1,12 @@
 package main
 
 import (
+	"go_study/donovan/chapter_1/pkg/switchcase"
+	// "go_study/donovan/chapter_1/pkg/webserver"
 	// "go_study/donovan/chapter_1/pkg/urls"
-	"go_study/donovan/chapter_1/pkg/fetchall"
+	// "go_study/donovan/chapter_1/pkg/fetchall"
 	// "bufio"
-	// "fmt"
+	"fmt"
 	// "image"
 	// "image/color"
 	// "image/gif"
@@ -12,14 +14,15 @@ import (
 	// "math"
 	// "math/rand"
 	// "os"
-
 	// "strings"
 	// "strconv"
 	// "strings"
 )
 
 func main() {
-	fetchall.FetchAll()
+	// switchcase.Switchcase()
+	fmt.Println(switchcase.Signum(5)) 
+	// fetchall.FetchAll()
 	// urls.SendReq()
 	// var s, sep string
 
@@ -35,13 +38,13 @@ func main() {
 	// dup2()
 
 	// file, err := os.Create("lissajous.gif")
-    // if err != nil {
-    //     panic(err)
-    // }
-    // defer file.Close()
+	// if err != nil {
+	//     panic(err)
+	// }
+	// defer file.Close()
 
-    // Вызываем функцию lissajous для создания анимации
-    // lissajous(file)
+	// Вызываем функцию lissajous для создания анимации
+	// lissajous(file)
 }
 
 // func main() {
