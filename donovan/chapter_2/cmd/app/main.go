@@ -1,10 +1,15 @@
 package main
 
 import (
+	"go_study/donovan/chapter_2/pkg/popcount"
+	"go_study/donovan/chapter_2/pkg/tempconv"
+	"log"
+
 	// "go_study/donovan/chapter_2/pkg/mathalgos"
 
 	// "flag"
 	"fmt"
+	"os"
 	// "strings"
 	// "go_study/donovan/chapter_2/pkg/declaration"
 )
@@ -14,28 +19,54 @@ import (
 // var n = flag.Bool("n", false, "пропуск символа новой строки")
 // var sep = flag.String("s", " ", "разделитель")
 
-type Celsius float64
-type Fahrenheit float64
+// type Celsius float64
+// type Fahrenheit float64
 
-const (
-	absoluteZeroC Celsius = 273.15
-	FreezingC     Celsius = 0
-	Boioling      Celsius = 100
-)
+// const (
+// 	absoluteZeroC Celsius = 273.15
+// 	FreezingC     Celsius = 0
+// 	Boioling      Celsius = 100
+// )
 
-func CToF(c Celsius) Fahrenheit { return Fahrenheit(c*9/5 + 32) }
-func FToC(f Fahrenheit) Celsius { return Celsius(f-32) * 5 / 9 }
-func (c Celsius) String() string {return fmt.Sprintf("%gC", c)}
+// func CToF(c Celsius) Fahrenheit { return Fahrenheit(c*9/5 + 32) }
+// func FToC(f Fahrenheit) Celsius { return Celsius(f-32) * 5 / 9 }
+// func (c Celsius) String() string {return fmt.Sprintf("%gC", c)}
+
+func f() {}
+
+var g = "g"
+
+var cwd string
+
+func init() {
+	var err error
+
+	cwd, err = os.Getwd()
+	if err != nil {
+		log.Fatalf("Error os.Getwd: %v", err)
+	}
+}
 
 func main() {
-	var c Celsius
-	var f Fahrenheit
+	f := "f"
+	fmt.Println(f) // локальная перменная затеняет функцию уровня пакета
 
-	fmt.Println(CToF(15))
-	fmt.Println(FToC(15))
-	fmt.Println(c == 0)
-	fmt.Println(f == 0)
-	fmt.Println(f == Fahrenheit(c))
+	fmt.Println(g) // просто перменная уровня пакета
+
+	toUpCase("privet")
+
+	fmt.Println(tempconv.CToF(15))
+	fmt.Println(tempconv.FToC(15))
+	fmt.Println(popcount.PopCount(15))
+
+	// var c Celsius
+	// var f Fahrenheit
+
+	// fmt.Println(CToF(15))
+	// fmt.Println(FToC(15))
+	// fmt.Println(c == 0)
+	// fmt.Println(f == 0)
+	// fmt.Println(f == Fahrenheit(c))
 
 	// medals := []string{"gold", "silver", "bronze"}
 
@@ -91,3 +122,10 @@ func main() {
 // 	*x++
 // 	return *x
 // }
+
+func toUpCase(s string) {
+	for _, s := range s {
+		s := s + 'A' - 'a'
+		fmt.Printf("%c", s)
+	}
+}
